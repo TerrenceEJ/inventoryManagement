@@ -32,18 +32,25 @@ public class Login {
 	
 	private void checkLogin() throws IOException {
 		Main m = new Main();
-		if(username.getText().toString().equals("admin") && password.getText().toString().equals ("admin")) {
-			wrongLogin.setText("Success!");
+
+			if(username.getText().toString().equals("admin") && password.getText().toString().equals ("admin")) {
+				wrongLogin.setText("Success!");
+				
+				m.changeScene("adminPath.fxml");//change scene after successful login
+			}
 			
-			m.changeScene("afterLogin.fxml");//change scene after successful login
-		}
-		
-		else if(username.getText().isEmpty() && password.getText().isEmpty()) {
-			wrongLogin.setText("Please enter your login info.");
-		}
-		
-		else {
-			wrongLogin.setText("Wrong username or password!");
-		}
+			else if(username.getText().toString().equals("user") && password.getText().toString().equals ("123")) {
+				wrongLogin.setText("Success!");
+				
+				m.changeScene("userPath.fxml");//change scene after successful login
+			}
+			
+			else if(username.getText().isEmpty() && password.getText().isEmpty()) {
+				wrongLogin.setText("Please enter your login info.");
+			}
+			
+			else {
+				wrongLogin.setText("Wrong username or password!");
+			}
 	}
 }
