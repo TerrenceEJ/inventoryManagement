@@ -3,11 +3,12 @@ package inv;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.io.*;
+import java.util.List;
 import java.util.Scanner;
 
 public class Product {
 
-	private ObservableList<Product> items = FXCollections.observableArrayList();
+	public static ObservableList<Product> items = FXCollections.observableArrayList();
 
 	private File file = new File("src/data/inventory.txt");
 
@@ -48,7 +49,6 @@ public class Product {
 				e.printStackTrace();
 			}
 		items = FXCollections.observableArrayList(products);
-			System.out.println(items);
 
 		return FXCollections.observableArrayList(products);
 	}
@@ -68,13 +68,35 @@ public class Product {
 		return FXCollections.observableArrayList(items);
 	}
 
-	private void save() throws IOException {
+	void save() throws IOException {
 		FileWriter writer = new FileWriter("src/data/inventory.txt");
-		for(Product product: items) {
+		List<Product> list = items;
+		for(Product product: list) {
 			writer.write(product.getName() + "-" + product.getPrice() + "-" + product.getQuantity() + "-" + product.getNumber() + "-"); //rewrite
 		}
 		writer.close();
 	}
+
+	void adjust(String name, Double price, int quantity) throws IOException {
+		setPrice(price);
+		setQuantity(quantity); //go through and set price and quantity updates
+		save();
+	}
+
+	void add(String name, Double price, int quantity, int number) throws IOException, ClassNotFoundException {
+		//setName(name);
+		//setPrice(price);
+		//setQuantity(quantity);
+		//setNumber(number); //go through and set details
+
+
+		items.add(new Product(name, price, quantity, number));
+		save();
+	}
+
+
+	public String toString(){
+		return name + "-" + price +"-" + quantity +"-" + number +"-";}
 
 	public String getName(){
 		return name;

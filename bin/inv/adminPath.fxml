@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -18,27 +19,35 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="addText" layoutX="406.0" layoutY="39.0" promptText="Add Item" />
-                        <Button fx:id="addButton" layoutX="470.0" layoutY="98.0" mnemonicParsing="false" text="Add" />
-                        <Button fx:id="removeButton" layoutX="153.0" layoutY="219.0" mnemonicParsing="false" onAction="#removeS" text="Delete Selection" />
+                        <TextField fx:id="addPN" layoutX="434.0" promptText="Product Name" />
+                        <Button fx:id="addB" layoutX="435.0" layoutY="242.0" mnemonicParsing="false" onAction="#addButton" text="Add" />
+                        <Button fx:id="removeButton" layoutX="153.0" layoutY="242.0" mnemonicParsing="false" onAction="#removeS" text="Delete Selection" />
                         <TableView fx:id="table" layoutX="2.0" layoutY="1.0" prefHeight="218.0" prefWidth="403.0">
                           <columns>
-                            <TableColumn fx:id="nameC" onEditStart="#getIndex" prefWidth="141.0" text="Product" />
+                            <TableColumn fx:id="nameC" prefWidth="141.0" text="Product" />
                             <TableColumn fx:id="priceC" minWidth="9.0" prefWidth="73.0" text="Price" />
                               <TableColumn fx:id="quantityC" prefWidth="58.0" text="Quantity" />
                               <TableColumn fx:id="numberC" prefWidth="130.0" text="Number" />
                           </columns>
                         </TableView>
+                        <TextField fx:id="addPrice" layoutX="434.0" layoutY="69.0" promptText="Price(15.50)" />
+                        <TextField fx:id="addQ" layoutX="434.0" layoutY="130.0" promptText="Quantity(15)" />
+                        <TextField fx:id="addPNum" layoutX="435.0" layoutY="194.0" promptText="Product Number" />
+                        <Button fx:id="adjust" layoutX="533.0" layoutY="242.0" mnemonicParsing="false" onAction="#update" text="Adjust" />
+                        <Label fx:id="errorPN" layoutX="416.0" layoutY="27.0" prefHeight="37.0" prefWidth="174.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+                        <Label fx:id="errorP" layoutX="422.0" layoutY="100.0" prefHeight="29.0" prefWidth="169.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+                        <Label fx:id="errorQ" layoutX="413.0" layoutY="157.0" prefHeight="38.0" prefWidth="182.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
+                        <Label fx:id="errorPNum" layoutX="419.0" layoutY="220.0" prefHeight="23.0" prefWidth="175.0" textAlignment="CENTER" textFill="RED" wrapText="true" />
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Check Stock">
+          <Tab fx:id="stockTab" onSelectionChanged="#stockChange" text="Check Stock">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="viewStock" prefHeight="302.0" prefWidth="600.0">
                            <columns>
-                              <TableColumn fx:id="nameC1" onEditStart="#getIndex" prefWidth="279.0" text="Product" />
+                              <TableColumn fx:id="nameC1" prefWidth="279.0" text="Product" />
                               <TableColumn fx:id="priceC1" minWidth="9.0" prefWidth="66.0" text="Price" />
                               <TableColumn fx:id="quantityC1" prefWidth="59.0" text="Quantity" />
                               <TableColumn fx:id="numberC1" prefWidth="195.0" text="Number" />
@@ -54,10 +63,11 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button fx:id="logout" alignment="CENTER" layoutX="246.0" layoutY="343.0" mnemonicParsing="false" onAction="#adminLogout" text="Logout">
+      <Button fx:id="rlogout" alignment="CENTER" layoutX="248.0" layoutY="363.0" mnemonicParsing="false" onAction="#adminLogout" prefHeight="37.0" prefWidth="108.0" text="Logout">
          <font>
-            <Font size="24.0" />
+            <Font size="14.0" />
          </font>
       </Button>
+      <Label fx:id="errorGen" layoutX="183.0" layoutY="297.0" prefHeight="67.0" prefWidth="254.0" textAlignment="JUSTIFY" textFill="RED" wrapText="true" />
    </children>
 </Pane>
