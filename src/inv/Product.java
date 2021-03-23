@@ -55,6 +55,7 @@ public class Product {
 				e.printStackTrace();
 			}
 		items = FXCollections.observableArrayList(products);
+			System.out.println(items);
 
 		return FXCollections.observableArrayList(products);
 	}
@@ -74,7 +75,7 @@ public class Product {
 		return FXCollections.observableArrayList(items);
 	}
 
-	void save() throws IOException {
+	void save() throws IOException, ClassNotFoundException {
 		FileWriter writer = new FileWriter("src/data/inventory.txt");
 		List<Product> list = items;
 		for(Product product: list) {
@@ -83,7 +84,7 @@ public class Product {
 		writer.close();
 	}
 
-	void adjust(String name, Double price, int quantity) throws IOException {
+	void adjust(String name, Double price, int quantity) throws IOException, ClassNotFoundException {
 		setPrice(price);
 		setQuantity(quantity); //go through and set price and quantity updates
 		save();
