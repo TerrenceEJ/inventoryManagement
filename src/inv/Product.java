@@ -30,6 +30,12 @@ public class Product {
 		this.number = number;
 	}
 
+	public ObservableList<Product> getProducts() throws IOException, ClassNotFoundException {
+		ObservableList<Product> products = FXCollections.observableArrayList();
+		products.addAll(read());
+		return products;
+	}
+
 	protected ObservableList<Product> read() throws IOException, ClassNotFoundException{
 		Scanner input = new Scanner(new File("src/data/inventory.txt"));
 		input.useDelimiter("-");

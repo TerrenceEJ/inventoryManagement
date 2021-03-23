@@ -7,6 +7,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/inventory.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/inv/userPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/inv/userPath.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/adminPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/userPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/userPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
