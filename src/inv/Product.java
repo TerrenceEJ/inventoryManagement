@@ -15,15 +15,15 @@ public class Product {
 	private String name;
 	private double price;
 	private int quantity;
-	private int number;
+	private Long number;
 
 	public Product(){
 		this.name = "";
 		this.price = 0;
 		this.quantity = 0;
-		this.number = 1;
+		this.number = Long.valueOf(0);
 	}
-	public Product(String name, double price, int quantity, int number){
+	public Product(String name, double price, int quantity, Long number){
 		this.name = name;
 		this.price = price;
 		this.quantity = quantity;
@@ -46,7 +46,7 @@ public class Product {
 					String name = input.next();
 					double price = Double.valueOf(input.next());
 					int quantity = input.nextInt();
-					int number = input.nextInt();
+					Long number = input.nextLong();
 
 					Product newProduct = new Product(name, price, quantity, number); //constructor
 					products = addProduct(products, newProduct);
@@ -90,20 +90,12 @@ public class Product {
 		save();
 	}
 
-	void add(String name, Double price, int quantity, int number) throws IOException, ClassNotFoundException {
-		//setName(name);
-		//setPrice(price);
-		//setQuantity(quantity);
-		//setNumber(number); //go through and set details
-
-
+	void add(String name, Double price, int quantity, Long number) throws IOException, ClassNotFoundException {
 		items.add(new Product(name, price, quantity, number));
 		save();
 	}
 
-
-	public String toString(){
-		return name + "-" + price +"-" + quantity +"-" + number +"-";}
+	public String toString(){ return name + "-" + price +"-" + quantity +"-" + number +"-";}
 
 	public String getName(){
 		return name;
@@ -129,11 +121,11 @@ public class Product {
 		this.quantity = quantity;
 	}
 
-	public int getNumber(){
+	public Long getNumber(){
 		return number;
 	}
 
-	public void setNumber(int number){
+	public void setNumber(Long number){
 		this.number = number;
 	}
 }
