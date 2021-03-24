@@ -148,15 +148,17 @@ public class adminPath implements Initializable{
 		return quantity;
 	}
 
-	public int PNum(){
+	public long PNum(){
 		String text = addPNum.getText();
-		int num = 0;
+		Long num = Long.valueOf(0);
 
 		if(text.equals("")){
 			errorPNum.setText("You forgot to scan a number"); //make sure a part number was assigned
 		}
 		else {
-			num = Integer.parseInt(text);
+			try {
+				num = Long.parseLong(text);
+			} catch (NumberFormatException e){ }
 			errorPNum.setText("");
 		}
 
@@ -167,7 +169,7 @@ public class adminPath implements Initializable{
 		String name = name();
 		Double price = price();
 		int quantity = quantity();
-		int number = PNum();
+		Long number = PNum();
 		boolean alreadyRan = false;
 
 		List<Product> list = product.getProducts();

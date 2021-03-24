@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77fe1e88-8171-4d5c-a1b5-74721f5a17b0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/inv/SaveTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx_sdk_16.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javafx_sdk_16.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/inv/userPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/inv/userPath.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/inventory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/adminPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/userPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/userPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +59,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="JavaSE-15" />
       <option name="MAIN_CLASS_NAME" value="inv.Main" />
       <module name="InventoryManagement" />
-      <option name="VM_PARAMETERS" value="--module-path C:\Users\Kyle\Documents\javafx-sdk-16/lib --add-modules=javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Terrence\Documents\javafx-sdk-16/lib --add-modules=javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -141,5 +136,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/InventoryManagement$IMS.ic" NAME="IMS Coverage Results" MODIFIED="1616532731373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
