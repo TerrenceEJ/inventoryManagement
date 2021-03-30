@@ -74,6 +74,7 @@ public class adminPath implements Initializable{
 			nameC.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take
 			priceC.setCellValueFactory(new PropertyValueFactory<>("price"));
 			quantityC.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+			quantityC.setCellFactory(param -> new CycleCount());
 			numberC.setCellValueFactory(new PropertyValueFactory<>("number"));
 
 			table.setItems(product.getProducts()); //set the table
