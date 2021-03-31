@@ -71,7 +71,7 @@ public class adminPath implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			nameC.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take
+			nameC.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take for adjust inventory tab
 			priceC.setCellValueFactory(new PropertyValueFactory<>("price"));
 			quantityC.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 			quantityC.setCellFactory(param -> new CycleCount());
@@ -79,7 +79,7 @@ public class adminPath implements Initializable{
 
 			table.setItems(product.getProducts()); //set the table
 
-			nameC1.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take
+			nameC1.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take for check stock tab
 			priceC1.setCellValueFactory(new PropertyValueFactory<>("price"));
 			quantityC1.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 			numberC1.setCellValueFactory(new PropertyValueFactory<>("number"));
@@ -180,11 +180,12 @@ public class adminPath implements Initializable{
 			if (products.getName().equals(name) || products.getNumber() == number) {
 				errorGen.setText("Error, you are already trying to create an item that exists!");
 			}
-			if (price == 0.0 || quantity == 0) {
-				errorGen.setText("Error, did not input a number!");
+			if (price == 0.0) {
+				errorGen.setText("Error, did not input a price!");
 			}
-			if (!alreadyRan && !products.getName().equals(name) && price != 0 && quantity != 0.0 && products.getNumber() != number) {
+			if (!alreadyRan && !products.getName().equals(name) && price != 0 && products.getNumber() != number) {
 				alreadyRan = true;
+				errorGen.setText("");
 				product.add(name, price, quantity, number);
 
 				Set<Product> dupe = new HashSet<Product>(list);

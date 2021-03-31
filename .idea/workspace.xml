@@ -6,6 +6,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/inventory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/inventory.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/adminPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/adminPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.java" afterDir="false" />
     </list>
