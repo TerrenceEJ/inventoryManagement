@@ -4,10 +4,7 @@
     <list default="true" id="77fe1e88-8171-4d5c-a1b5-74721f5a17b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/data/tmp.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/inv/adminPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/bin/inv/adminPath.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/adminPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/adminPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.java" afterDir="false" />
     </list>
@@ -126,5 +123,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/InventoryManagement$IMS.ic" NAME="IMS Coverage Results" MODIFIED="1616532731373" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
