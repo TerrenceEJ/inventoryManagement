@@ -23,4 +23,8 @@
 hs_err_pid*
 src/data/inventory.txt
 bin/data/inventory.txt
-*.txt
+.idea/workspace.xml
+.idea/workspace.xml
+.idea/workspace.xml
+*.xml
+.idea/workspace.xml

@@ -74,28 +74,23 @@ public class adminPath implements Initializable{
 			nameC.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take for adjust inventory tab
 			priceC.setCellValueFactory(new PropertyValueFactory<>("price"));
 			quantityC.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+			quantityC.setCellFactory(param -> new CycleCount());
 			numberC.setCellValueFactory(new PropertyValueFactory<>("number"));
 
-			table.setItems(getProducts()); //set the table
+			table.setItems(product.getProducts()); //set the table
 
 			nameC1.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take for check stock tab
 			priceC1.setCellValueFactory(new PropertyValueFactory<>("price"));
 			quantityC1.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 			numberC1.setCellValueFactory(new PropertyValueFactory<>("number"));
 
-			viewStock.setItems(getProducts());
+			viewStock.setItems(product.getProducts());
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public ObservableList<Product> getProducts() throws IOException, ClassNotFoundException {
-		ObservableList<Product> products = FXCollections.observableArrayList();
-		products.addAll(product.read());
-		return products;
 	}
 	
 	public void adminLogout(ActionEvent event) throws IOException{
@@ -106,7 +101,7 @@ public class adminPath implements Initializable{
 	public void removeS() throws IOException, ClassNotFoundException {
 		index = table.getSelectionModel().getSelectedIndex(); //remove selected item from
 		product.remove(index);
-		table.setItems(getProducts()); //reread file and update table
+		table.setItems(product.getProducts()); //reread file and update table
 	}
 	
 	public String name(){
@@ -154,15 +149,17 @@ public class adminPath implements Initializable{
 		return quantity;
 	}
 
-	public int PNum(){
+	public long PNum(){
 		String text = addPNum.getText();
-		int num = 0;
+		Long num = Long.valueOf(0);
 
 		if(text.equals("")){
 			errorPNum.setText("You forgot to scan a number"); //make sure a part number was assigned
 		}
 		else {
-			num = Integer.parseInt(text);
+			try {
+				num = Long.parseLong(text);
+			} catch (NumberFormatException e){ }
 			errorPNum.setText("");
 		}
 
@@ -173,10 +170,10 @@ public class adminPath implements Initializable{
 		String name = name();
 		Double price = price();
 		int quantity = quantity();
-		int number = PNum();
+		Long number = PNum();
 		boolean alreadyRan = false;
 
-		List<Product> list = getProducts();
+		List<Product> list = product.getProducts();
 
 		if(!list.stream().anyMatch(o-> o.getName().equals(name)) && !list.stream().anyMatch(o-> o.getNumber() == number)){//run for loop if list doesnt contain name or number
 		for(Product products : list) {
@@ -193,9 +190,9 @@ public class adminPath implements Initializable{
 
 				Set<Product> dupe = new HashSet<Product>(list);
 				if(dupe.stream().anyMatch(o-> o.getName().equals(name))) {
-					product.remove(getProducts().size()-1); //make sure no duplicates are made. if made, remove it from list
+					product.remove(product.getProducts().size()-1); //make sure no duplicates are made. if made, remove it from list
 				}
-				table.setItems(getProducts()); //set tableview again
+				table.setItems(product.getProducts()); //set tableview again
 			}
 			else {
 				//do nothing/placeholder
@@ -209,17 +206,17 @@ public class adminPath implements Initializable{
 		Double price = price();
 		int quantity = quantity();
 
-		Iterator<Product> iter = getProducts().iterator();
+		Iterator<Product> iter = product.getProducts().iterator();
 		while(iter.hasNext()) {
 			Product products = iter.next();
 			if (products.getName().equals(name)) {
 				products.adjust(name, price, quantity); //adjust the item, can take all changes or 1
 			}
 		}
-		table.setItems(getProducts()); //update table view
+		table.setItems(product.getProducts()); //update table view
 	}
 
 	public void stockChange() throws IOException, ClassNotFoundException {
-		viewStock.setItems(getProducts()); //get current items for tab change
+		viewStock.setItems(product.getProducts()); //get current items for tab change
 	}
 }
