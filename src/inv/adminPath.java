@@ -1,21 +1,25 @@
 package inv;
 
+import java.io.IOException;
+import java.net.URL;
+import java.util.*;
+import java.util.stream.Collectors;
+
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.*;
+import static inv.Product.items;
 
 public class adminPath implements Initializable{
 	
 	Product product = new Product(); //instance Product class
-	ArrayList<Product> cartProducts = new ArrayList<Product>();
-
 	@FXML
 	private Label errorP;
 	@FXML
@@ -39,8 +43,6 @@ public class adminPath implements Initializable{
 	@FXML
 	private Button addB;
 	@FXML
-	private Button addC;
-	@FXML
 	private Button update;
 	@FXML
 	private Button removeButton;
@@ -48,8 +50,6 @@ public class adminPath implements Initializable{
 	private TableView<Product> table;
 	@FXML
 	private TableView<Product> viewStock;
-	@FXML
-	private TableView<Product> cart;
 	@FXML
 	private TableColumn<Product, String> nameC;
 	@FXML
@@ -66,43 +66,29 @@ public class adminPath implements Initializable{
 	private TableColumn<Product, Integer> quantityC1;
 	@FXML
 	private TableColumn<Product, Integer> numberC1;
-	@FXML
-	private TableColumn<Product, String> nameC2;
-	@FXML
-	private TableColumn<Product, Double> priceC2;
-	@FXML
-	private TableColumn<Product, Integer> quantityC2;
-	@FXML
-	private TableColumn<Product, Integer> numberC2;
-	@FXML
-	private TextField addToQty;
-
 
 	public static int index;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			nameC.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take
+			nameC.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take for adjust inventory tab
 			priceC.setCellValueFactory(new PropertyValueFactory<>("price"));
 			quantityC.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+			quantityC.setCellFactory(param -> new CycleCount());
 			numberC.setCellValueFactory(new PropertyValueFactory<>("number"));
 
 			table.setItems(product.getProducts()); //set the table
 
-			nameC1.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take
+			nameC1.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take for check stock tab
 			priceC1.setCellValueFactory(new PropertyValueFactory<>("price"));
 			quantityC1.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 			numberC1.setCellValueFactory(new PropertyValueFactory<>("number"));
 
 			viewStock.setItems(product.getProducts());
 
-			nameC2.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take
-			priceC2.setCellValueFactory(new PropertyValueFactory<>("price"));
-			quantityC2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-			numberC2.setCellValueFactory(new PropertyValueFactory<>("number"));
-
-			cart.setItems(FXCollections.observableArrayList(cartProducts));
+			//add the event listener to the table
+			table.addEventFilter(MouseEvent.MOUSE_CLICKED, clickEvent);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -110,7 +96,7 @@ public class adminPath implements Initializable{
 			e.printStackTrace();
 		}
 	}
-
+	
 	public void adminLogout(ActionEvent event) throws IOException{
 		Main m = new Main(); //create main object
 		m.changeScene("Login.fxml"); //set scene back to login
@@ -121,7 +107,7 @@ public class adminPath implements Initializable{
 		product.remove(index);
 		table.setItems(product.getProducts()); //reread file and update table
 	}
-
+	
 	public String name(){
 		String name = addPN.getText();
 
@@ -198,11 +184,12 @@ public class adminPath implements Initializable{
 			if (products.getName().equals(name) || products.getNumber() == number) {
 				errorGen.setText("Error, you are already trying to create an item that exists!");
 			}
-			if (price == 0.0 || quantity == 0) {
-				errorGen.setText("Error, did not input a number!");
+			if (price == 0.0) {
+				errorGen.setText("Error, did not input a price!");
 			}
-			if (!alreadyRan && !products.getName().equals(name) && price != 0 && quantity != 0.0 && products.getNumber() != number) {
+			if (!alreadyRan && !products.getName().equals(name) && price != 0 && products.getNumber() != number) {
 				alreadyRan = true;
+				errorGen.setText("");
 				product.add(name, price, quantity, number);
 
 				Set<Product> dupe = new HashSet<Product>(list);
@@ -236,39 +223,27 @@ public class adminPath implements Initializable{
 	public void stockChange() throws IOException, ClassNotFoundException {
 		viewStock.setItems(product.getProducts()); //get current items for tab change
 	}
-
-
-	public void addToCart() throws IOException, ClassNotFoundException {
-		Product selection = table.getSelectionModel().getSelectedItem();
-
-		if (selection != null) {
-			int numb;
-			numb = Integer.parseInt(addToQty.getText());
-			System.out.println(numb);
-
-			int qty = selection.getQuantity();
-			if (qty >= 0) {
-				selection.setQuantity(qty - numb);
-				Product cartItem = new Product(selection.getName(), selection.getPrice(), numb, selection.getNumber());
-				product.save();
-				cart.getItems().add(cartItem);
-				cartProducts.add(cartItem); //adds clone of product to cart
-
-				Iterator<Product> iter = product.getProducts().iterator();
-				while (iter.hasNext()) {
-					Product products = iter.next();
-					if (products.getName().equals(selection.getName())) {
-						products.adjust(selection.getName(), selection.getPrice(), selection.getQuantity()); //adjust the item, can take all changes or 1
-					}
+	//Handles clicks within the inventory table
+	EventHandler<MouseEvent> clickEvent = new EventHandler<MouseEvent>() {
+		@Override
+		public void handle(MouseEvent mouseEvent) {
+			//double click to clear
+			if(mouseEvent.getClickCount() == 2){
+				table.getSelectionModel().clearSelection();
+				addPN.clear();
+				addQ.clear();
+				addPNum.clear();
+				addPrice.clear();
+			}
+			//single click selects object and sets the text for easy adjustment
+			else if(mouseEvent.getClickCount() == 1) {
+				if(!table.getSelectionModel().isEmpty()){
+					addPN.setText(table.getSelectionModel().getSelectedItem().getName());
+					addQ.setText(String.valueOf(table.getSelectionModel().getSelectedItem().getQuantity()));
+					addPNum.setText(String.valueOf(table.getSelectionModel().getSelectedItem().getNumber()));
+					addPrice.setText(String.valueOf(table.getSelectionModel().getSelectedItem().getPrice()));
 				}
-				table.setItems(product.getProducts());
-				System.out.println(selection);
-
 			}
 		}
-	}
-
-	public void sellS() throws IOException, ClassNotFoundException {
-		cart.getItems().clear();
-	}
+	};
 }
