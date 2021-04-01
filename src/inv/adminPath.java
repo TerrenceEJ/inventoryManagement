@@ -8,17 +8,18 @@ import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import static inv.Product.items;
 
 public class adminPath implements Initializable{
 	
 	Product product = new Product(); //instance Product class
-
 	@FXML
 	private Label errorP;
 	@FXML
@@ -85,6 +86,9 @@ public class adminPath implements Initializable{
 			numberC1.setCellValueFactory(new PropertyValueFactory<>("number"));
 
 			viewStock.setItems(product.getProducts());
+
+			//add the event listener to the table
+			table.addEventFilter(MouseEvent.MOUSE_CLICKED, clickEvent);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -219,4 +223,27 @@ public class adminPath implements Initializable{
 	public void stockChange() throws IOException, ClassNotFoundException {
 		viewStock.setItems(product.getProducts()); //get current items for tab change
 	}
+	//Handles clicks within the inventory table
+	EventHandler<MouseEvent> clickEvent = new EventHandler<MouseEvent>() {
+		@Override
+		public void handle(MouseEvent mouseEvent) {
+			//double click to clear
+			if(mouseEvent.getClickCount() == 2){
+				table.getSelectionModel().clearSelection();
+				addPN.clear();
+				addQ.clear();
+				addPNum.clear();
+				addPrice.clear();
+			}
+			//single click selects object and sets the text for easy adjustment
+			else if(mouseEvent.getClickCount() == 1) {
+				if(!table.getSelectionModel().isEmpty()){
+					addPN.setText(table.getSelectionModel().getSelectedItem().getName());
+					addQ.setText(String.valueOf(table.getSelectionModel().getSelectedItem().getQuantity()));
+					addPNum.setText(String.valueOf(table.getSelectionModel().getSelectedItem().getNumber()));
+					addPrice.setText(String.valueOf(table.getSelectionModel().getSelectedItem().getPrice()));
+				}
+			}
+		}
+	};
 }
