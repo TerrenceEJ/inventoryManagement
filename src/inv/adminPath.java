@@ -20,6 +20,8 @@ import static inv.Product.items;
 public class adminPath implements Initializable{
 	
 	Product product = new Product(); //instance Product class
+	ArrayList<Product> cartProducts = new ArrayList<Product>();
+
 	@FXML
 	private Label errorP;
 	@FXML
@@ -66,6 +68,18 @@ public class adminPath implements Initializable{
 	private TableColumn<Product, Integer> quantityC1;
 	@FXML
 	private TableColumn<Product, Integer> numberC1;
+	@FXML
+	private TableColumn<Product, String> nameC2;
+	@FXML
+	private TableColumn<Product, Double> priceC2;
+	@FXML
+	private TableColumn<Product, Integer> quantityC2;
+	@FXML
+	private TableColumn<Product, Integer> numberC2;
+	@FXML
+	private TextField addToQty;
+	@FXML
+	private TableView<Product> cart;
 
 	public static int index;
 
@@ -86,6 +100,13 @@ public class adminPath implements Initializable{
 			numberC1.setCellValueFactory(new PropertyValueFactory<>("number"));
 
 			viewStock.setItems(product.getProducts());
+
+			nameC2.setCellValueFactory(new PropertyValueFactory<>("name")); //set what values the columns will take
+			priceC2.setCellValueFactory(new PropertyValueFactory<>("price"));
+			quantityC2.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+			numberC2.setCellValueFactory(new PropertyValueFactory<>("number"));
+
+			cart.setItems(FXCollections.observableArrayList(cartProducts));
 
 			//add the event listener to the table
 			table.addEventFilter(MouseEvent.MOUSE_CLICKED, clickEvent);
@@ -223,6 +244,42 @@ public class adminPath implements Initializable{
 	public void stockChange() throws IOException, ClassNotFoundException {
 		viewStock.setItems(product.getProducts()); //get current items for tab change
 	}
+
+	public void addToCart() throws IOException, ClassNotFoundException {
+		Product selection = table.getSelectionModel().getSelectedItem();
+
+		if (selection != null) {
+			int numb;
+			numb = Integer.parseInt(addToQty.getText());
+			System.out.println(numb);
+
+			int qty = selection.getQuantity();
+			if (qty >= 0) {
+				selection.setQuantity(qty - numb);
+				Product cartItem = new Product(selection.getName(), selection.getPrice(), numb, selection.getNumber());
+				product.save();
+				cart.getItems().add(cartItem);
+				cartProducts.add(cartItem); //adds clone of product to cart
+
+				Iterator<Product> iter = product.getProducts().iterator();
+				while (iter.hasNext()) {
+					Product products = iter.next();
+					if (products.getName().equals(selection.getName())) {
+						products.adjust(selection.getName(), selection.getPrice(), selection.getQuantity()); //adjust the item, can take all changes or 1
+					}
+				}
+				table.setItems(product.getProducts());
+				System.out.println(selection);
+
+			}
+		}
+	}
+
+	public void sellS() throws IOException, ClassNotFoundException {
+		cart.getItems().clear();
+	}
+
+
 	//Handles clicks within the inventory table
 	EventHandler<MouseEvent> clickEvent = new EventHandler<MouseEvent>() {
 		@Override
