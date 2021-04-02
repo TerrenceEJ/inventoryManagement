@@ -260,7 +260,6 @@ public class adminPath implements Initializable{
 				product.save();
 				cart.getItems().add(cartItem);
 				cartProducts.add(cartItem); //adds clone of product to cart
-
 				Iterator<Product> iter = product.getProducts().iterator();
 				while (iter.hasNext()) {
 					Product products = iter.next();
