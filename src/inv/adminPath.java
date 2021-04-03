@@ -224,6 +224,11 @@ public class adminPath implements Initializable{
 			}
 		}
 		}
+		//If there are no products in the database at that moment, allow items to be added
+		if(list.isEmpty()){
+			product.add(name, price, quantity, number);
+			table.setItems(product.getProducts());
+		}
 	}
 
 	public void update() throws IOException, ClassNotFoundException {
