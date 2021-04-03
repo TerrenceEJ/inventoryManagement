@@ -168,6 +168,10 @@ public class adminPath implements Initializable{
 		}
 		else {
 			quantity = Integer.parseInt(text);
+			if(quantity < 0){
+				errorQ.setText("Quantity cannot be less than 0");
+				return 0;
+			}
 			errorQ.setText("");
 		}
 
@@ -254,7 +258,7 @@ public class adminPath implements Initializable{
 			System.out.println(numb);
 
 			int qty = selection.getQuantity();
-			if (qty >= 0) {
+			if (qty - numb >= 0) {
 				selection.setQuantity(qty - numb);
 				Product cartItem = new Product(selection.getName(), selection.getPrice(), numb, selection.getNumber());
 				product.save();
