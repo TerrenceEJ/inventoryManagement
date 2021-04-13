@@ -1,4 +1,4 @@
-//This class is for the cycle counting functionality
+//This class is for the cycle counting functionality -written by Kyle Bess
 
 package inv;
 

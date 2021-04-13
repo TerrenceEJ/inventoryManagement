@@ -1,4 +1,4 @@
-//This is just a Timer that runs in the background and makes sure the file stays updated throughout program usage
+//This is just a Timer that runs in the background and makes sure the file stays updated throughout program usage -written by Kyle Bess
 package inv;
 
 import java.io.IOException;
