@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="InventoryManagement:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="77fe1e88-8171-4d5c-a1b5-74721f5a17b0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/CycleCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/CycleCount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/SaveTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/SaveTimer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/adminPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/adminPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/userPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/userPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryManagement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryManagement.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,13 +50,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/javafx-sdk-16/lib" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
   </component>
-  <component name="RunManager" selected="Application.IMS">
+  <component name="RunManager" selected="JAR Application.InventoryManagement.jar">
     <configuration name="IMS" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="JavaSE-15" />
       <option name="MAIN_CLASS_NAME" value="inv.Main" />
@@ -90,6 +85,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="InventoryManagement.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/classes/artifacts/InventoryManagement_jar/InventoryManagement.jar" />
+      <option name="VM_PARAMETERS" value="--module-path C:\Users\Terrence\Documents\javafx-sdk-16/lib --add-modules=javafx.controls,javafx.fxml" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JarApplication">
       <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2" />
@@ -104,8 +105,14 @@
     </configuration>
     <list>
       <item itemvalue="Application.IMS" />
+      <item itemvalue="JAR Application.InventoryManagement.jar" />
       <item itemvalue="Java Scratch.IMS" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JAR Application.InventoryManagement.jar" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
