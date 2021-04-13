@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77fe1e88-8171-4d5c-a1b5-74721f5a17b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/data/inventory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/inventory.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inv/adminPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/CycleCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/CycleCount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/SaveTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/SaveTimer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/adminPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/inv/adminPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/adminPath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/userPath.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inv/userPath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inv/userPath.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
